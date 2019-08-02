@@ -1,0 +1,10 @@
+secrets.txt
+*.iml
+.gradle
+.idea
+build
+*/build/*
+buildkiteclient/out
+buildkiteclient/build
+gradle/wrapper/*.jar
+tags
