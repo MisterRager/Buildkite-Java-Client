@@ -70,13 +70,13 @@ class PipelineJsonTest {
 
     @Test
     fun testDeserializeSingle() {
-        objectMapper.readValue<DetailedPipeline>(
+        objectMapper.readValue<Pipeline>(
             ClassLoader.getSystemClassLoader().getResourceAsStream("pipeline_single_body.json"),
-            DetailedPipeline::class.java
+            Pipeline::class.java
         ).let { pipeline ->
             assertNotNull(pipeline)
             pipeline!!.apply {
-                                assertEquals("849411f9-9e6d-4739-a0d8-e247088e9b52", id)
+                assertEquals("849411f9-9e6d-4739-a0d8-e247088e9b52", id)
                 assertEquals("https://api.buildkite.com/v2/organizations/acme-inc/pipelines/my-pipeline", url)
                 assertEquals("https://buildkite.com/acme-inc/my-pipeline", webUrl)
                 assertEquals("My Pipeline", name)

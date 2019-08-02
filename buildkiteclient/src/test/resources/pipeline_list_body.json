@@ -33,6 +33,8 @@
     "scheduled_jobs_count": 0,
     "running_jobs_count": 0,
     "waiting_jobs_count": 0,
-    "visibility": "private"
+    "visibility": "private",
+    "env": {},
+    "steps": []
   }
 ]

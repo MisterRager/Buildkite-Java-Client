@@ -24,4 +24,6 @@ interface Pipeline {
     val scheduledJobsCount: Int
     val waitingJobsCount: Int
     val visibility: String
+    val env: Map<String, String>
+    val steps: List<PipelineStep>
 }
