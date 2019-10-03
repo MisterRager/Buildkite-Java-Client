@@ -1,11 +1,18 @@
+import java.net.URI
+
 plugins {
     kotlin("jvm") version "1.3.21"
+    id("com.github.blindpirate.gogradle") version "0.11.4"
 }
 
 repositories {
     jcenter()
     google()
+    maven {
+        url = URI("https://plugins.gradle.org/m2/")
+    }
 }
+
 
 dependencies {
     // Injection
@@ -20,7 +27,7 @@ dependencies {
     implementation("com.squareup.retrofit2:retrofit:2.6.1")
     implementation("com.squareup.retrofit2:adapter-rxjava2:2.6.1")
     implementation("com.squareup.retrofit2:converter-jackson:2.6.1")
-    implementation("com.fasterxml.jackson.module:jackson-module-kotiln:2.9.7")
+    implementation("com.fasterxml.jackson.module:jackson-module-kotlin:2.9.7")
 
     testImplementation(project(":buildkiteclient"))
 
@@ -31,3 +38,6 @@ dependencies {
 
 group = "es.lolrav"
 version = "0.0.1"
+
+golang {
+}

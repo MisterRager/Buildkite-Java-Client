@@ -1,16 +1,16 @@
 package es.lolrav.buildkiteclient
 
-import es.lolrav.buildkiteclient.model.Pipeline
-import es.lolrav.buildkiteclient.net.BuildkiteApi
 import io.reactivex.Flowable
+import io.reactivex.Single
+import retrofit2.Response
 import java.net.URL
 
-class BuildkiteClient(
-    private val api: BuildkiteApi
+class BuildkitePager<T>(
+    private val fetchPage: (page: Int) -> Single<Response<List<T>>>
 ) {
-    fun getPipelines(fromPage: Int = 0): Flowable<Pipeline> =
-        api.getPipelines(fromPage).flatMapPublisher { response ->
-            Flowable.fromIterable(response.body()).let { body: Flowable<Pipeline> ->
+    fun readPages(fromPage: Int = 0): Flowable<T> =
+        fetchPage(fromPage).flatMapPublisher { response ->
+            Flowable.fromIterable(response.body()).let { body: Flowable<T> ->
                 response
                     .headers()["Location"]
                     ?.let { Regex.fromLiteral("<([^>]*)> rel=\"next\"").find(it) }
@@ -26,7 +26,7 @@ class BuildkiteClient(
                     ?.toMap()
                     ?.get("page")
                     ?.toIntOrNull()
-                    ?.let { page -> body.concatWith(getPipelines(page)) }
+                    ?.let { page -> body.mergeWith(readPages(page)) }
                     ?: body
             }
         }
