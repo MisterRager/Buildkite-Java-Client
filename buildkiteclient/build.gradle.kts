@@ -1,3 +1,4 @@
+import org.jetbrains.kotlin.config.KotlinCompilerVersion
 import java.net.URI
 
 plugins {
@@ -14,11 +15,11 @@ repositories {
 
 
 dependencies {
+    implementation(kotlin("stdlib", version = KotlinCompilerVersion.VERSION))
+    implementation(kotlin("reflect", version = KotlinCompilerVersion.VERSION))
+
     // Injection
     implementation("org.kodein.di:kodein-di-jx-inject-jvm:5.2.0")
-
-    implementation(kotlin("stdlib"))
-
     // Jackson
     implementation("com.fasterxml.jackson.core:jackson-databind:2.9.9")
     implementation("com.fasterxml.jackson.module:jackson-module-mrbean:2.9.9")
@@ -27,6 +28,8 @@ dependencies {
     implementation("com.squareup.retrofit2:adapter-rxjava2:2.6.1")
     implementation("com.squareup.retrofit2:converter-jackson:2.6.1")
     implementation("com.fasterxml.jackson.module:jackson-module-kotlin:2.9.7")
+
+    implementation("org.reactivestreams:reactive-streams:1.0.3")
 
     testImplementation(project(":buildkiteclient"))
 
