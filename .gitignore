@@ -1,0 +1,6 @@
+.gradle
+.idea
+*.iml
+secrets.txt
+gradle/wrapper/*.jar
+tags
