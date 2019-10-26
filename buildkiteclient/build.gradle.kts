@@ -1,8 +1,7 @@
 import java.net.URI
 
 plugins {
-    kotlin("jvm") version "1.3.21"
-    id("com.github.blindpirate.gogradle") version "0.11.4"
+    kotlin("jvm")
 }
 
 repositories {
@@ -38,6 +37,3 @@ dependencies {
 
 group = "es.lolrav"
 version = "0.0.1"
-
-golang {
-}
