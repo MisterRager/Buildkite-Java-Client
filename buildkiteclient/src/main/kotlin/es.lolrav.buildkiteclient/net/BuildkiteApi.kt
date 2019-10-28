@@ -32,3 +32,5 @@ interface BuildkiteApi {
     @DELETE("pipelines/{slug}")
     fun deletePipeline(@Path("slug") slug: String): Completable
 }
+
+fun BuildkiteApi.getPipelines(): Single<Response<List<Pipeline>>> = getPipelines(0)

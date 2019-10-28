@@ -2,6 +2,7 @@ package es.lolrav.buildkiteclient.model
 
 interface PipelineStep {
     val type: String
+    val label: String
     val name: String
     val command: String
     val artifactPaths: String?

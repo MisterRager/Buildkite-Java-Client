@@ -3,6 +3,8 @@ package es.lolrav.buildkiteclient.model
 interface ProviderSettings {
     val buildPullRequests: Boolean
     val buildPullRequestForks: Boolean
+    val commitStatus: Boolean
+    val commitStatusError: String
     val publishCommitStatus: Boolean
     val publishCommitStatusPerStep: Boolean
     val buildTags: Boolean
@@ -15,4 +17,5 @@ interface ProviderSettings {
     val pullRequestBranchFilterEnabled: Boolean?
     val prefixPullRequestForkBranchNames: Boolean?
     val separatePullRequestStatuses: Boolean?
+    val pullRequestBranchFilterConfiguration: String?
 }
